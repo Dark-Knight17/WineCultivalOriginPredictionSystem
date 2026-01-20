@@ -2,6 +2,7 @@ from flask import Flask, request, render_template
 import joblib
 import numpy as np
 import os
+import pickle
 
 app = Flask(__name__)
 
@@ -9,8 +10,13 @@ app = Flask(__name__)
 # Ensure the path matches your directory structure
 MODEL_PATH = os.path.join('model', 'wine_cultivar_model.pkl')
 
+print("Loading model from:", MODEL_PATH)
 try:
-    model = joblib.load(MODEL_PATH)
+   with open(MODEL_PATH, 'rb') as f:
+        model_data = pickle.load(f)
+        model = model_data['model']      # This is the actual sklearn model
+        scaler = model_data['scaler']    # Optional if you want to scale inputs
+        selected_features = model_data['features']
 except FileNotFoundError:
     print(f"Error: Model not found at {MODEL_PATH}. Please run the training script first.")
     model = None
