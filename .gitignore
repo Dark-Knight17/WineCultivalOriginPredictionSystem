@@ -62,3 +62,6 @@ Thumbs.db   # Windows
 *.env
 config.yaml
 config.json
+
+# submission file
+WineCultivar_hosted_webGUI_link.txt
