@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wine Cultivar Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>🍷 Wine Origin Predictor</h1>
+
+        <form action="/" method="POST">
+            <div class="form-group">
+                <label for="alcohol">Alcohol</label>
+                <input type="number" step="0.01" name="alcohol" placeholder="e.g. 13.2" required>
+            </div>
+
+            <div class="form-group">
+                <label for="malic_acid">Malic Acid</label>
+                <input type="number" step="0.01" name="malic_acid" placeholder="e.g. 2.77" required>
+            </div>
+
+            <div class="form-group">
+                <label for="ash">Ash</label>
+                <input type="number" step="0.01" name="ash" placeholder="e.g. 2.51" required>
+            </div>
+
+            <div class="form-group">
+                <label for="total_phenols">Total Phenols</label>
+                <input type="number" step="0.01" name="total_phenols" placeholder="e.g. 1.28" required>
+            </div>
+
+            <div class="form-group">
+                <label for="color_intensity">Color Intensity</label>
+                <input type="number" step="0.01" name="color_intensity" placeholder="e.g. 4.38" required>
+            </div>
+
+            <div class="form-group">
+                <label for="proline">Proline</label>
+                <input type="number" step="0.01" name="proline" placeholder="e.g. 1050" required>
+            </div>
+
+            <button type="submit">Predict Cultivar</button>
+        </form>
+
+        {% if prediction_text %}
+        <div class="result">
+            {{ prediction_text }}
+        </div>
+        {% endif %}
+
+        <div class="footer">
+            Machine Learning Project - Part B
+        </div>
+    </div>
+
+</body>
+
+</html>
